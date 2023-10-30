@@ -20,21 +20,31 @@ class ApiService {
     return BreedResponse.fromJson(data);
   }
 
-  Future< Map<String, dynamic>> fetchAllBreeds() async {
+  Future<Map<String, dynamic>> fetchAllBreeds() async {
     final response = await _apiClient.get(EndPoints.getAllBreeds);
     Map<String, dynamic> data = json.decode(response);
     return data;
   }
 
-  Future<BreedResponse> fetchRandomImageByBreedAndSubBreed(breed,subbreed) async {
-    final response = await _apiClient.get(EndPoints.randomImageByBreedAndSubBreed(breed, subbreed));
+  Future<BreedResponse> fetchRandomImageByBreedAndSubBreed(
+      breed, subbreed) async {
+    final response = await _apiClient
+        .get(EndPoints.randomImageByBreedAndSubBreed(breed, subbreed));
     var data = json.decode(response);
     return BreedResponse.fromJson(data);
   }
 
-  Future<BreedResponse> fetchImagesByBreedAndSubBreed(breed,subbreed) async {
-    final response = await _apiClient.get(EndPoints.breedImagesByBreedAndSubBreed(breed, subbreed));
+  Future<BreedResponse> fetchImagesByBreedAndSubBreed(breed, subbreed) async {
+    final response = await _apiClient
+        .get(EndPoints.breedImagesByBreedAndSubBreed(breed, subbreed));
     var data = json.decode(response);
     return BreedResponse.fromJson(data);
+  }
+
+  Future<String> getRandomImageByBreed(String breedName) async {
+    final response =
+        await _apiClient.get(EndPoints.getRandomImageByBreed(breedName));
+    final Map<String, dynamic> data = json.decode(response.body);
+    return data['message'];
   }
 }

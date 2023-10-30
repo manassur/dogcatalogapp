@@ -9,11 +9,15 @@ class BreedController with ChangeNotifier {
   bool? _error;
 
   List<String> _breeds=[];
-
   List<String> get breeds => _breeds;
-
   set breeds(List<String> value) {
     _breeds = value;
+  }
+
+  List<String> _breedImages=[];
+  List<String> get breedImages => _breedImages;
+  set breedImages(List<String> value) {
+    breedImages = value;
   }
 
 
@@ -83,4 +87,14 @@ class BreedController with ChangeNotifier {
     _isLoading = false;
   }
 
+  void getRandomImageForBreed(breedName) async{
+    for (String breed in breeds) {
+      try {
+        String randomImageUrl = await _apiService.getRandomImageByBreed(breed);
+        _breedImages.add(randomImageUrl);
+      } catch (e) {
+        debugPrint('Error for breed $breed: $e');
+      }
+    }
+  }
 }

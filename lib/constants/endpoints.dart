@@ -7,7 +7,14 @@ class EndPoints{
   }
   static String randomImageByBreedAndSubBreed(breed,subbreed){
     return '$baseUrl/breed/$breed/$subbreed/images';
-  }  static String breedImagesByBreedAndSubBreed(breed,subreed){
+  }
+  static String breedImagesByBreedAndSubBreed(breed,subreed){
     return '$baseUrl/breed/$breed/$subreed/images';
   }
+  static String getRandomImageByBreed(breedName){
+    return '$baseUrl/breeds/image/random?breed=$breedName';
+  }
+
+
+
 }

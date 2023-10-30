@@ -63,6 +63,7 @@ class _DogListState extends State<DogList> {
                       decoration: BoxDecoration(
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(12.0),
+
                       ),
                       child: Center(
                         child: Text(
